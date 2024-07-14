@@ -1,0 +1,114 @@
+*{
+  color: white;
+}
+.home-container {
+  height: 100vh;
+  width: 100%;
+  background-image: url(../../assets/homeBAckground.png);
+  background-size: cover;
+  background-position: center;
+}
+.button-container{
+  width: 500px;
+  position: relative;
+  display: flex;
+  gap: 44px;
+  top: 240px;
+  left: 447px;
+}
+.watch-now{
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  height: 76px;
+  width: 220px;
+  font-weight: bold;
+  font-size: larger;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.watch-now img{
+  margin-left: 10px;
+}
+.watch-leter img{
+  margin-left: 10px;
+}
+.watch-leter{
+  color:white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid red;
+  border-radius: 8px;
+  height: 76px;
+  width: 220px;
+  font-weight: bold;
+  font-size: larger;
+  background: transparent;
+}
+.title{
+width: 420px;
+position: relative;
+top: 250px;
+left: 100px;
+/* font-family: Arial, sans-serif; */
+font-size: 32px;
+line-height: 48px;
+font-weight: 700;
+}
+.about-movie{
+  width: 600px;
+  position: relative;
+  left: 100px;
+  top: 260px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.about-movie button{
+  color: black;
+  border: none;
+  border-radius: 15px;
+  height: 40px;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 15px;
+}
+.about-movie p img{
+  margin-right: 8px;
+}
+.description{
+  position: relative;
+  width: 650px;
+  left: 100px;
+  top: 290px;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-weight: 400;
+  line-height: 23px;
+}
+.move-next{
+  position: relative;
+  top: 290px;
+  left: 600px;
+  width: 184px;
+  height: 21px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.move-next div{
+  background-color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+
+}
+.move-next .active{
+  width: 50px;
+  background-color: red;
+  border-radius: 10px;
+}
