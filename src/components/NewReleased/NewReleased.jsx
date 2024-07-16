@@ -2,7 +2,7 @@ import './NewReleased.css'
 function NewReleased({profSrc,title,timeSrc,btn1,btn2,ep}){
   return<div className='new-released'>
     <div style={{position:"relative"}} className='profile'>
-      <img style={{width:"245px",height:"310px"}} src={profSrc} alt="" />
+      <img style={{width:"260px",height:"330px"}} src={profSrc} alt="" />
       {ep&&(<p style={{
         position:"absolute",
         background:"red",

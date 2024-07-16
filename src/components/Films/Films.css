@@ -23,6 +23,7 @@
   justify-content: center;
 }
 .tranding-container{
+  max-width: 84vw;
   display: flex;
   justify-content: space-between;
   padding: 20px 0;

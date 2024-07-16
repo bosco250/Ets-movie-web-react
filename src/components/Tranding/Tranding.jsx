@@ -5,7 +5,7 @@ const Tranding = ({imageSrc,playImgsrc,timeSrc,time,starSrc,star,title,btn1,btn2
   return (
     <div className='trandings-info'>
       <div >
-        <img style={{width:"320px",height:"280px"}} src={imageSrc} alt="" />
+        <img style={{width:"340px",height:"300px"}} src={imageSrc} alt="" />
        <button className='play-button'><img src={playImgsrc} alt="" /></button> 
       <div className='time-star'>
       <p><img src={timeSrc} alt="" />{time}</p>
