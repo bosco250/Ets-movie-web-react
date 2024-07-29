@@ -6,7 +6,6 @@
   width: 100%;
   position: fixed;
   top: 0;
-  display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
@@ -35,4 +34,8 @@
 }
 .header-container ul li a{
   text-decoration: none;
+}
+.mobile-nav:hover{
+  cursor: pointer;
+  color: orangered;
 }

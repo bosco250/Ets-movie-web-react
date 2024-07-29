@@ -1,19 +1,18 @@
-.films-container{
+.films-container {
   background-color: black;
-  padding: 30px 80px 0px 100px;
-
+  padding: 30px;
 }
-.recent-container{
+.recent-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 }
-.next-arrow{
+.next-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
-.next-arrow div{
+.next-arrow div {
   background-color: white;
   border-radius: 50%;
   width: 88px;
@@ -22,29 +21,29 @@
   align-items: center;
   justify-content: center;
 }
-.tranding-container{
+.tranding-container {
   max-width: 84vw;
   display: flex;
   justify-content: space-between;
   padding: 20px 0;
 }
-.trandings{
+.trandings {
   display: flex;
   gap: 30px;
   color: white;
 }
-.new-container{
-  padding :0 0 30px 0;
+.new-container {
+  padding: 0 0 30px 0;
   display: flex;
   gap: 10px;
 }
-.tranding-container .lbutton{
+.tranding-container .lbutton {
   border: 1px solid red;
   background-color: transparent;
   border-radius: 10px;
   padding: 5px;
 }
-.tranding-container .active{
+.tranding-container .active {
   background-color: red;
   border: none;
 }
