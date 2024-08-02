@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Tranding.css";
-import ViewIcon from "../../assets/viewall.png";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { GrLinkNext } from "react-icons/gr";

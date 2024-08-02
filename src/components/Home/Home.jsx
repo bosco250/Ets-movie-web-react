@@ -14,6 +14,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import Films from "../Films/Films";
 const Home = () => {
   const [data, setData] = useState([]);
 
@@ -37,7 +38,7 @@ const FetchNowPlaying = async () => {
     FetchNowPlaying()
   },[])
   console.log(data)
-  return (
+  return (<>
     <div className="relative z-10"><Swiper 
     modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
       spaceBetween={50}
@@ -110,6 +111,8 @@ relative md:top-[250px] top-56 md:left-[600px] left-20 w-[184px]  h-5 flex  flex
       }
     </Swiper>
     </div>
+      <Films/>
+    </>
   );
 };
 

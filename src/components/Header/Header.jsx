@@ -4,13 +4,14 @@ import Notification from "../../assets/notif.png";
 import "./Header.css";
 import { FaBars} from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 const Header = () => {
   const [isOpened, setIsOpened] = useState(false);
   return (
     <div className=" w-full fixed top-0  z-50">
       <div className="header-container md:flex hidden">
         <ul>
-          <li>Home</li>
+          <li> <Link to='/'>Home</Link> </li>
           <li>
             <a href="#">Genre</a>
           </li>
