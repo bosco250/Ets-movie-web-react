@@ -32,7 +32,7 @@ const Header = () => {
             <a href="#">Animation</a>
           </li>
           <li>
-            <a href="#">Login/SignUp</a>
+            <Link to='/login'>Login/SignUp</Link>
           </li>
           <li>
             <a href="#">
@@ -50,7 +50,7 @@ const Header = () => {
         className="flex md:hidden bg-black text-white fixed w-screen h-20 top-0 left-0 justify-between items-center
       z-10 "
       >
-        <div className="flex-1 px-5 "> Movies</div>
+        <div className="flex-1 px-5 "><Link to='/'>Movies</Link> </div>
         <div className="text-xl">
           <button
             onClick={() => setIsOpened(!isOpened)}
@@ -72,8 +72,9 @@ const Header = () => {
             : "hidden"
         }`}
       >
-      {isOpened&&(  <ul className=" md:hidden list-none text-xl flex flex-col gap-4 pt-4">
-          <li>Home</li>
+      {isOpened&&(  <ul onClick={() => setIsOpened(!isOpened)}
+      className=" md:hidden list-none text-xl flex flex-col gap-4 pt-4">
+          <li> <Link to='/'>Home</Link> </li>
           <li>
             <a href="#">Genre</a>
           </li>
@@ -90,7 +91,7 @@ const Header = () => {
             <a href="#">Animation</a>
           </li>
           <li>
-            <a href="#">Login/SignUp</a>
+          <Link to='/login'>Login/SignUp</Link>
           </li>
           <li>
             <a href="#">Notification</a>

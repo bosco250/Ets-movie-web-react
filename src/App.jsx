@@ -4,13 +4,13 @@ import "./App.css";
 import Films from "./components/Films/Films.jsx";
 import SingleMovie from "./SingleMovie.jsx";
 import { Outlet } from "react-router-dom";
+import Footer from "./Footer.jsx";
 function App() {
   return (
     <>
        <Header />
        <Outlet/>
-      {/*<Home  />
-      <Films /> */}
+       <Footer/>
     </>
   );
 }

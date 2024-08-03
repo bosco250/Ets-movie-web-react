@@ -38,7 +38,7 @@ const Recent = () => {
   };
   const startIndex = (currentPage - 1) * itemPerPage;
   const currentData = data.slice(startIndex, startIndex + itemPerPage);
-  console.log(data);
+  // console.log(data);
   return (
     <div className="flex flex-row flex-wrap gap-5  ">
       {currentData.map((item) => {

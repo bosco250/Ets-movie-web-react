@@ -15,6 +15,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Films from "../Films/Films";
+import { Link } from "react-router-dom";
 const Home = () => {
   const [data, setData] = useState([]);
 
@@ -37,7 +38,7 @@ const FetchNowPlaying = async () => {
   useEffect(()=>{
     FetchNowPlaying()
   },[])
-  console.log(data)
+  // console.log(data)
   return (<>
     <div className="relative z-10"><Swiper 
     modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
@@ -59,12 +60,16 @@ const FetchNowPlaying = async () => {
       className="flex flex-row flex-wrap md:top-[240px] md:left-[440px] md:gap-10
     left-[100px] top-[190px] gap-5 relative"
     >
+      <Link to={`/playvid/${item.id}`}>
       <button className="watch-now">
         Whatch Now <img src={WatchImg} alt="" />
       </button>
+      </Link>
+      <Link to={`/films/${item.id}`}>
       <button className="watch-leter">
         Whatch Later <img src={WatchImg1} alt="" />{" "}
       </button>
+      </Link>
     </div>
     <div className="relative md:top-[240px] top-48 md:left-[100px] left-3 flex flex-col gap-5 ">
       <div className="title md:text-[30px] text-[20px] ">
@@ -91,7 +96,7 @@ const FetchNowPlaying = async () => {
         <p>{item.overview} </p>
       </div>
     </div>
-    <div
+    {/* <div
       className="move-next
 relative md:top-[250px] top-56 md:left-[600px] left-20 w-[184px]  h-5 flex  flex-row justify-center items-center gap-4
 
@@ -103,7 +108,7 @@ relative md:top-[250px] top-56 md:left-[600px] left-20 w-[184px]  h-5 flex  flex
       <div></div>
       <div></div>
       <div></div>
-    </div>
+    </div> */}
   </div>
   </SwiperSlide> 
           )

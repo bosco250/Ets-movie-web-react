@@ -3,6 +3,7 @@ import './NewReleased.css'
 import axios from 'axios'
 import { motion } from 'framer-motion'
 import { GrLinkNext } from 'react-icons/gr'
+import { Link } from 'react-router-dom'
 function NewReleased({timeSrc,btn1,btn2,ep}){
   const [data ,setData]=useState([])
   const [currentPage,setCurrentPage]=useState(1)
@@ -51,7 +52,9 @@ function NewReleased({timeSrc,btn1,btn2,ep}){
           animate={{opacity:1,x:0}}
           transition={{duration:0.7}}
           key={item.id} className="md:w-[255px]">
-            <div style={{position:"relative"}} className='profile'>
+            
+          <Link to={`/films/${item.id}`}>
+          <div style={{position:"relative"}} className='profile'>
       <img className='md:w-[250px] md:h-[330px] rounded-[10px]'
       src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="" />
       {ep&&(<p style={{
@@ -65,6 +68,8 @@ function NewReleased({timeSrc,btn1,btn2,ep}){
         padding:"5px"
       }}>{ep}</p>)}
     </div>
+          </Link>
+
     <div className='new-descript mt-4'>
       <p>{item.title}</p>
       <div className='flex flex-row justify-center items-center'>

@@ -62,20 +62,7 @@ const Films = () => {
           <Recommended timeSrc={Time} btn1="CAM" btn2="3:12:00" ep="" />
         </div>
       </div>
-      <footer
-        style={{
-          height: "80px",
-          backgroundColor: "black",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-end",
-          textAlign: "center",
-          paddingBottom: "10px",
-          color: "white",
-        }}
-      >
-        &copy; BOSCO {new Date().getFullYear()}, All Rights Reserved
-      </footer>
+      
     </>
   );
 };

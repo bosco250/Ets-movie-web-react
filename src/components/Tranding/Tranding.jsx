@@ -3,7 +3,7 @@ import "./Tranding.css";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { GrLinkNext } from "react-icons/gr";
-
+import { Link } from "react-router-dom";
 const Tranding = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemPerPage = 3;
@@ -61,14 +61,17 @@ const Tranding = (props) => {
               className="trandings-info"
             >
               <div>
+              <Link to={`/films/${item.id}`}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
                   className=" rounded-[10px] md:w-[340px] md:h-[320px] w-[90%] h-[80%] "
                   alt=""
                 />
+                </Link>
+                <Link to={`/playvid/${item.id}`}>
                 <button className="play-button">
                   <img src={props.playImgsrc} alt="" />
-                </button>
+                </button></Link>
                 <div className="time-star">
                   <p>
                     <img src={props.timeSrc} alt="" />

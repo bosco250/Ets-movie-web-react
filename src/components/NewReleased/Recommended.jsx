@@ -3,6 +3,7 @@ import "./NewReleased.css";
 import axios from "axios";
 import { GrLinkNext } from "react-icons/gr";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 function Recommended({ timeSrc, btn1, btn2, ep }) {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -62,11 +63,13 @@ function Recommended({ timeSrc, btn1, btn2, ep }) {
               className=" md:w-[250px] mb-5"
             >
               <div style={{ position: "relative" }} className="profile">
+              <Link to={`/films/${item.id}`}>
                 <img
                   className="md:w-[250px] md:h-[330px] rounded-[10px]"
                   src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
                   alt=""
                 />
+                </Link>
                 {ep && (
                   <p
                     style={{
