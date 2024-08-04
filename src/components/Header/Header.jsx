@@ -3,7 +3,7 @@ import Search from "../../assets/Vector.png";
 import Notification from "../../assets/notif.png";
 import "./Header.css";
 import { FaBars} from "react-icons/fa6";
-import { IoCloseSharp } from "react-icons/io5";
+import { IoCloseSharp, IoNotificationsOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 const Header = () => {
   const [isOpened, setIsOpened] = useState(false);
@@ -34,12 +34,10 @@ const Header = () => {
           <li>
             <Link to='/login'>Login/SignUp</Link>
           </li>
-          <li>
+          <li >
             <a href="#">
-              <img
-                src={Notification}
-                alt="Notification"
-                className="notification"
+            <IoNotificationsOutline
+                className=" w-5 h-5 text-white cursor-pointer"
               />
             </a>
           </li>

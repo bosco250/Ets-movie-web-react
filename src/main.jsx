@@ -8,39 +8,46 @@ import SingleMovie from "./SingleMovie.jsx";
 import FullMovie from "./FullMovie.jsx";
 import Home from "./components/Home/Home.jsx";
 import LogIn from "./LogIn.jsx";
+import SignUp from "./SignUp.jsx";
+import { AuthProvider } from "./AuthContext.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children:[
+    children: [
       {
-        path:'/',
-        element:<Home/>
+        path: "/",
+        element: <Home />,
       },
-      
-      
+
       {
-        path:'/films',
-        element:<Films/>
-      },
-      {
-        path:'/films/:id',
-        element:<SingleMovie/>
+        path: "/films",
+        element: <Films />,
       },
       {
-        path: '/playvid/:id',
-        element:<FullMovie/>
+        path: "/films/:id",
+        element: <SingleMovie />,
       },
       {
-        path:'/login',
-        element:<LogIn/>
-      }
-    ]
+        path: "/playvid/:id",
+        element: <ProtectedRoute component={<FullMovie />} />,
+      },
+      {
+        path: "/login",
+        element: <LogIn />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+    ],
   },
-  
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
