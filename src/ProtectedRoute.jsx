@@ -25,7 +25,7 @@ const ProtectedRoute = ({ component }) => {
   }, [user]);
 
   if (isEmailVerified === null) {
-    return <div>Loading...</div>; // Loading state while checking
+    return <div className="text-white bg-black text-2xl">Loading...</div>; // Loading state while checking
   }
 
   return isEmailVerified ? component : <Navigate to="/login" />;
