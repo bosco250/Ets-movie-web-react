@@ -40,7 +40,7 @@ const Recent = () => {
   const currentData = data.slice(startIndex, startIndex + itemPerPage);
   // console.log(data);
   return (
-    <div className="flex flex-row flex-wrap gap-5  ">
+    <div className="flex flex-row flex-wrap gap-3  ">
       {currentData.map((item) => {
         return (
           <motion.div
@@ -48,12 +48,12 @@ const Recent = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             key={item.id}
-            className="flex w-[225px] gap-2 h-[110px] "
+            className="flex w-[225px] gap-2 h-[110px]"
           >
             <div className="">
-              <Link to={`/films/${item.id}` } state={{item}}>
+              <Link to={`/films/${item.id}`} state={{ item }}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} 
+                  src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
                   alt=""
                   className="w-[100px] h-[108px] rounded-[5px]"
                 />

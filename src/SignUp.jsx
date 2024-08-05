@@ -3,11 +3,12 @@ import { IoCloseSharp } from "react-icons/io5";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FIREBASE_AUTH } from "../firebaseconfig/config";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 const SignUp = () => {
   const [isOpen, setIsOpen] = useState(true);
   const [email, setEmail]=useState("")
   const [password,setPassword]=useState("")
+  const [name,setName]=useState("")
   const navigate = useNavigate();
   const handleBack = () => {
     setIsOpen(!isOpen);
@@ -18,7 +19,8 @@ const SignUp = () => {
     e.preventDefault()
     console.log('clicked')
     try {
-      const response=await createUserWithEmailAndPassword(FIREBASE_AUTH,email,password)
+      const response=await createUserWithEmailAndPassword(FIREBASE_AUTH,email,password);
+            await updateProfile(response.user,{displayName:name});
       // console.log(response)
       navigate(-1)
     } catch (error) {
@@ -41,6 +43,16 @@ const SignUp = () => {
             <h1 className="text-2xl mb-10 font-[500] text-white text-start leading-10">
               Fill the form to register
             </h1>
+            <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300">
+            User Name:
+            <input value={name} onChange={(e)=>setName(e.target.value)}
+              required
+              placeholder="Enter your user name"
+              type="text"
+              className="border border-orange-100 h-10 bg-gray-100 w-64 md:w-80 rounded-xl px-4 font-[300] font-sans text-gray-950"
+            />
+          </label>
+
             <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300">
               Email:
               <input

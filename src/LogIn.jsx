@@ -38,7 +38,10 @@ const LogIn = () => {
       
         <form className="flex flex-col gap-2 text-xl">
           <h1 className="text-2xl mb-10 font-[500] text-white text-start leading-10">Fill the form for login</h1>
-            <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300">
+          
+          
+
+          <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300">
             Email:
             <input value={email} onChange={(e)=>setEmail(e.target.value)}
               required
