@@ -10,6 +10,8 @@ const SignUp = () => {
   const [password,setPassword]=useState("")
   const [name,setName]=useState("")
   const navigate = useNavigate();
+  const [loading,setLoading]=useState(false)
+
   const handleBack = () => {
     setIsOpen(!isOpen);
     navigate(-1);
@@ -17,14 +19,17 @@ const SignUp = () => {
   // console.log('signup data'+email+" "+password)
   const handleData=async(e)=>{
     e.preventDefault()
-    console.log('clicked')
+    setLoading(true)
     try {
       const response=await createUserWithEmailAndPassword(FIREBASE_AUTH,email,password);
             await updateProfile(response.user,{displayName:name});
-      // console.log(response)
+      alert("Registration Successfull please login")
       navigate(-1)
     } catch (error) {
       console.log(error)
+    }
+    finally{
+      setLoading(false)
     }
   }
   return (
@@ -41,7 +46,7 @@ const SignUp = () => {
         <div className="flex flex-row flex-wrap gap-20 justify-center pt-[14vh] font-inter  bg-black text-white h-[87vh] ">
           <form className="flex flex-col gap-2 text-xl">
             <h1 className="text-2xl mb-10 font-[500] text-white text-start leading-10">
-              Fill the form to register
+              Register
             </h1>
             <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300">
             User Name:
@@ -76,10 +81,10 @@ const SignUp = () => {
             <button
               onClick={(e)=>handleData(e)}
               type="submit"
-              className="px-4 py-2 bg-white rounded-xl mt-8 hover:cursor-pointer hover:bg-gray-200 text-gray-800 text-2xl
-            hover:text-red-600 font-[500] max-w-[320px]"
-            >
-              SignUp
+              className="px-4 py-2 bg-red-700 rounded-xl mt-8 hover:cursor-pointer text-white text-2xl
+            hover:text-black font-[500] max-w-[320px]"
+            disabled={loading}>
+              {loading?"Registering...":' SignUp'}
             </button>
           </form>
         </div>

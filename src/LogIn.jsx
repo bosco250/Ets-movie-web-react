@@ -11,6 +11,7 @@ const LogIn = () => {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
   const [error,setErorr]=useState("")
+  const [loading,setLoading]=useState(false)
   const navigate=useNavigate();
   const handleBack=()=>{
     setIsOpen(!isOpen)
@@ -18,14 +19,18 @@ const LogIn = () => {
   }
   const handleSubmit=async(e)=>{
     e.preventDefault()
+    setLoading(true)
     setErorr("")
     try {
       const {user}=await signInWithEmailAndPassword(FIREBASE_AUTH,email,password)
       console.log(user)
       navigate('/')
+      alert("Congulaturation Login Successfull!!")
     } catch (error) {
       console.log(error)
       setErorr("Wrong email or Password!..")
+    }finally{
+      setLoading(false)
     }
   }
   return (
@@ -37,12 +42,12 @@ const LogIn = () => {
     {isOpen && <div className="flex flex-row flex-wrap gap-20 justify-center pt-[14vh] font-inter  bg-black text-white h-[87vh] ">
       
         <form className="flex flex-col gap-2 text-xl">
-          <h1 className="text-2xl mb-10 font-[500] text-white text-start leading-10">Fill the form for login</h1>
+          <h1 className="text-2xl mb-10 font-[500] text-white text-start leading-10">Login</h1>
           
           
 
           <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300">
-            Email:
+            Email address:
             <input value={email} onChange={(e)=>setEmail(e.target.value)}
               required
               placeholder="Enter your email"
@@ -61,14 +66,14 @@ const LogIn = () => {
           </label>
           <button onClick={(e)=>handleSubmit(e)}
             type="submit"
-            className="px-4 py-2 bg-white rounded-xl mt-8 hover:cursor-pointer hover:bg-gray-200 text-gray-800 text-2xl
-            hover:text-red-600 font-[500] max-w-[320px]"
+            className="px-4 py-2 bg-red-600 rounded-xl mt-8 hover:cursor-pointer text-white text-2xl
+             font-[500] max-w-[320px]" disabled={loading}
           >
-            Login
+            {loading?"Logging in...":"Login"}
           </button>
           {error && <p className="text-red-600 mt-4">{error}</p>}
           <p className=""> Or <Link className="text-red-600 hover:text-blue-700"
-           to='/signup'>please sign up here</Link></p>
+           to='/signup'>Create account here</Link></p>
         </form>
       
     </div>}</div>

@@ -65,7 +65,7 @@ const Header = () => {
                     <li className=" relative">
                    <Link> <span onClick={()=>setSignout(!signout)}>{user.displayName}</span></Link>
                     {signout&&<div onClick={handleSignOut}
-                    className="absolute top-14 h-10 left-0 w-28 rounded-md bg-black 
+                    className="absolute top-14 h-10 left-[-4px] w-28 rounded-md bg-black 
                     hover:text-red-600 hover:font-bold hover:cursor-pointer text-center text-[17px] font-[300] ">
                     SignOut</div>}
                   </li>
