@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/films/:id",
-        element: <SingleMovie />,
+        element: <ProtectedRoute component={<SingleMovie />} />,
       },
       {
         path: "/playvid/:id",

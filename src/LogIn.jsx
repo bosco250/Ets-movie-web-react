@@ -11,8 +11,25 @@ const LogIn = () => {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
   const [error,setErorr]=useState("")
+  const [emailError,setEmailError]=useState(false)
+  const [passwordError,SetPasswordError]=useState(false)
   const [loading,setLoading]=useState(false)
   const navigate=useNavigate();
+
+  const isValidateForm=()=>{
+    if(!email){
+      setEmailError("Email is required")
+      SetPasswordError("")
+      return false;
+    }
+    if(!password){
+      SetPasswordError("Password is required")
+      setEmailError("")
+      return false;
+    }
+    return true;
+  }
+
   const handleBack=()=>{
     setIsOpen(!isOpen)
     navigate('/')
@@ -21,6 +38,12 @@ const LogIn = () => {
     e.preventDefault()
     setLoading(true)
     setErorr("")
+
+    if(!isValidateForm()){
+      setLoading(false)
+      return;
+    }
+
     try {
       const {user}=await signInWithEmailAndPassword(FIREBASE_AUTH,email,password)
       console.log(user)
@@ -29,6 +52,15 @@ const LogIn = () => {
     } catch (error) {
       console.log(error)
       setErorr("Wrong email or Password!..")
+      if (error.code === 'auth/invalid-email') {
+        setEmailError("Email is not valid");
+        SetPasswordError("")
+      } else if (error.code === 'auth/email-already-in-use') {
+        setEmailError("Email is already in use");
+        SetPasswordError("")
+      } else {
+        setEmailError(error.message);
+      }
     }finally{
       setLoading(false)
     }
@@ -46,22 +78,22 @@ const LogIn = () => {
           
           
 
-          <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300">
+          <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300 relative">
             Email address:
+            {emailError&& <p className="text-red-600 mt-4 text-[13px] absolute right-0 top-[-5px]">{emailError}</p>}
             <input value={email} onChange={(e)=>setEmail(e.target.value)}
-              required
               placeholder="Enter your email"
               type="email"
-              className="border border-orange-100 h-10 bg-gray-100 w-64 md:w-80 rounded-xl px-4 font-[300] font-sans text-gray-950"
+              className="border border-red-600 h-10 bg-gray-100 w-64 md:w-80 rounded-xl px-4 font-[300] font-sans text-gray-950"
             />
           </label>
-          <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300">
+          <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300 relative">
             Password:
+            {passwordError && <p className="text-red-600 mt-4 text-[13px] absolute right-0 top-[-5px]">{passwordError}</p>}
             <input value={password} onChange={(e)=>setPassword(e.target.value)}
-              required
               placeholder="Write strong password"
               type="password"
-              className="border border-orange-100 h-10 bg-gray-100 w-64 md:w-80 rounded-xl px-4 font-[300] font-sans text-gray-950"
+              className="border border-red-600 h-10 bg-gray-100 w-64 md:w-80 rounded-xl px-4 font-[300] font-sans text-gray-950"
             />
           </label>
           <button onClick={(e)=>handleSubmit(e)}

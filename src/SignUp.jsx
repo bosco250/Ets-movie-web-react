@@ -10,8 +10,31 @@ const SignUp = () => {
   const [password,setPassword]=useState("")
   const [name,setName]=useState("")
   const navigate = useNavigate();
-  const [loading,setLoading]=useState(false)
-
+  const [loading,setLoading]=useState(false)  
+  const [nameError,setNameErorr]=useState(false)
+  const [emailError,setEmailError]=useState(false)
+  const [passwordError,SetPasswordError]=useState(false)
+  const isValidateForm=()=>{
+    if(!name){
+      setNameErorr("Name is required")
+      setEmailError('')
+      SetPasswordError("")
+      return false;
+    }
+    if(!email){
+      setEmailError('Email is required')
+      setNameErorr("")
+      SetPasswordError("")
+      return false;
+    }
+    if(!password){
+      SetPasswordError("Password is rquired")
+      setEmailError('')
+      setNameErorr("")
+      return false;
+    }
+    return true;
+  }
   const handleBack = () => {
     setIsOpen(!isOpen);
     navigate(-1);
@@ -20,6 +43,12 @@ const SignUp = () => {
   const handleData=async(e)=>{
     e.preventDefault()
     setLoading(true)
+
+    if(!isValidateForm()){
+      setLoading(false)
+      return;
+    }
+
     try {
       const response=await createUserWithEmailAndPassword(FIREBASE_AUTH,email,password);
             await updateProfile(response.user,{displayName:name});
@@ -27,6 +56,17 @@ const SignUp = () => {
       navigate(-1)
     } catch (error) {
       console.log(error)
+      if (error.code === 'auth/invalid-email') {
+        setEmailError("Email is not valid");
+        setNameErorr("")
+        SetPasswordError("")
+      } else if (error.code === 'auth/email-already-in-use') {
+        setEmailError("Email is already in use");
+        setNameErorr("")
+        SetPasswordError("")
+      } else {
+        setEmailError(error.message);
+      }
     }
     finally{
       setLoading(false)
@@ -48,34 +88,34 @@ const SignUp = () => {
             <h1 className="text-2xl mb-10 font-[500] text-white text-start leading-10">
               Register
             </h1>
-            <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300">
+            <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300 relative">
             User Name:
+            {nameError&& <p className="text-red-600 mt-4 text-[13px] absolute right-0 top-[-5px]">{nameError}</p>}
             <input value={name} onChange={(e)=>setName(e.target.value)}
-              required
               placeholder="Enter your user name"
               type="text"
-              className="border border-orange-100 h-10 bg-gray-100 w-64 md:w-80 rounded-xl px-4 font-[300] font-sans text-gray-950"
+              className="border border-red-600 h-10 bg-gray-100 w-64 md:w-80 rounded-xl px-4 font-[300] font-sans text-gray-950"
             />
           </label>
 
-            <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300">
-              Email:
+            <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300 relative">
+              Email address:
+              {emailError&& <p className="text-red-600 mt-4 text-[13px] absolute right-0 top-[-5px]">{emailError}</p>}
               <input
-                required 
                 value={email} onChange={(e)=>{setEmail(e.target.value)}}
                 placeholder="Enter your email"
                 type="email"
-                className="border border-orange-100 h-10 bg-gray-100 w-64 md:w-80 rounded-xl px-4 font-[300] font-sans text-gray-950"
+                className="border border-red-600 h-10 bg-gray-100 w-64 md:w-80 rounded-xl px-4 font-[300] font-sans text-gray-950"
               />
             </label>
-            <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300">
+            <label className="flex justify-start flex-col gap-2 font-[450] text-gray-300 relative">
               Password:
+              {passwordError&& <p className="text-red-600 mt-4 text-[13px] absolute right-0 top-[-5px]">{passwordError}</p>}
               <input
                 value={password} onChange={(e)=>{setPassword(e.target.value)}}
-                required
                 placeholder="Write strong password"
                 type="password"
-                className="border border-orange-100 h-10 bg-gray-100 w-64 md:w-80 rounded-xl px-4 font-[300] font-sans text-gray-950"
+                className="border border-red-600 h-10 bg-gray-100 w-64 md:w-80 rounded-xl px-4 font-[300] font-sans text-gray-950"
               />
             </label>
             <button
