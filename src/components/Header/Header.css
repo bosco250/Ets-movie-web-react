@@ -39,3 +39,6 @@
   cursor: pointer;
   color: orangered;
 }
+ul li:hover{
+ color: red;
+}
