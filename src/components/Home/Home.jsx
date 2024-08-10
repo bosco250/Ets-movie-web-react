@@ -30,7 +30,6 @@ const FetchNowPlaying = async () => {
   try {
     const response = await axios.get('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options);
     setData(response.data.results);
-    // console.log(response.data.results);
   } catch (e) {
     console.log('Error is: ' + e);
   }
@@ -50,7 +49,7 @@ const FetchNowPlaying = async () => {
       scrollbar={{ draggable: true }}
   >
       { 
-        data.map((item)=>{
+        data.slice(1,30).map((item)=>{
           return(
           <SwiperSlide key={item.id}>
             

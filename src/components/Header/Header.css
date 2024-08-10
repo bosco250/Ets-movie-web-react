@@ -1,4 +1,4 @@
-.header-container{
+/* .header-container{
   background-color: black;
   color: white;
   text-align: center;
@@ -16,7 +16,6 @@
   display: flex;
   text-align: center;
   gap: 16px;
-  /* font-family: Arial, Helvetica, sans-serif; */
   margin-right: 100px;
 }
 .header-container ul li input{
@@ -41,4 +40,4 @@
 }
 ul li:hover{
  color: red;
-}
+} */
